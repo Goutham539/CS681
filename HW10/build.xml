@@ -30,7 +30,7 @@
 	     
 	   </target>
 	   <target name="run" depends="compile">
-	   	<java classname="edu.umb.cs681.hw10.MultiThread">
+	   	<java classname="edu.umb.cs681.hw10.RunnableClass">
 	   			<classpath refid="classpath"></classpath>
 	   		</java>
 	   
