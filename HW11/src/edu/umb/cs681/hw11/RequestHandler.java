@@ -87,8 +87,8 @@ public class RequestHandler implements Runnable {
 		Thread T11  = new Thread(R11);
 		Thread T12  = new Thread(R12);
 		Thread T13 = new Thread(R13);
-		Thread T14 = new Thread(R13);
-		Thread T15 = new Thread(R13);
+		Thread T14 = new Thread(R14);
+		Thread T15 = new Thread(R15);
 		
 		T1.start();
 		T2.start();
