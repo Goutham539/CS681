@@ -24,8 +24,7 @@ public class RequestHandler implements Runnable {
 		
 		String[] files = {"a.html", 
 						  "b.html",
-						  "c.html", 
-						  "d.html"};
+						  "c.html"};
 		AccessCounter ac = AccessCounter.getInstance();
 		
 		while (true) {			
