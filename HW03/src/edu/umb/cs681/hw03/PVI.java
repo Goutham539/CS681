@@ -23,7 +23,7 @@ public class PVI {
 		            List Clarke = matrix.stream().filter((i) -> i.get(5).contains("Clarke")).collect(Collectors.toList()).get(0);
 		            
 		            System.out.println("Number of deaths in Tama county of the Iowa are: " + Tama.get(7));
-		            System.out.println("Number of deaths in Tama county of the Iowa are: " + Clarke.get(7));
+		            System.out.println("Number of deaths in Tama county of the Clarke are: " + Clarke.get(7));
 
 		            String death = matrix.stream().filter((i) -> i.get(4).contains("Iowa"))
 		                    .map((i) -> i.get(7)).reduce("0", (subtotal, element) -> String.valueOf(Integer.parseInt(subtotal) + Integer.parseInt(element)));
