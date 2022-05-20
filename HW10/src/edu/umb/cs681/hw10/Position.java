@@ -57,7 +57,7 @@ public final class Position {
     	return new Position(this.latitude, this.longitude, newAlt);
     }
     
-    public double distanceTo(Position anotherPosition) {
-    	return (this.latitude-anotherPosition.latitude)+(this.longitude-anotherPosition.longitude)+(this.altitude-anotherPosition.altitude);
+    public Position distanceTo(Position anotherPosition) {
+    	return new Position((this.latitude-anotherPosition.latitude),(this.longitude-anotherPosition.longitude),(this.altitude-anotherPosition.altitude));
     }
 }
