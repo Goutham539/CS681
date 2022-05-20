@@ -22,27 +22,25 @@ public class RequestHandler implements Runnable {
 
 	public void run() {
 		
-		String[] files = {"AccessCounter.class", 
-						  "RequestHandler.class", 
-						  "a.html", 
+		String[] files = {"a.html", 
 						  "b.html",
 						  "c.html", 
 						  "d.html"};
-		AccessCounter objAccessCounter = AccessCounter.getInstance();
+		AccessCounter ac = AccessCounter.getInstance();
 		
 		while (true) {			
 			rLock.lock();
 			try {
 				if(done) {
-	    			System.out.println("Threads execution complete");
+	    			System.out.println("Threads execution completed");
 	    			break;
 	    		}
 				
 				int num = new Random().nextInt(files.length);
 				Path path = FileSystems.getDefault().getPath(".", files[num]);				
 				
-				objAccessCounter.increment(path);
-				System.out.println(files[num] + " path count: " + objAccessCounter.getCount(path));
+				ac.increment(path);
+				System.out.println(files[num] + " path count: " + ac.getCount(path));
 			}
 			finally {
 				rLock.unlock();
@@ -52,7 +50,7 @@ public class RequestHandler implements Runnable {
 				Thread.sleep(1000);
 			}
 			catch(InterruptedException e) {
-				System.out.println("Error in:"+Thread.currentThread().getName()+e.toString());
+				System.out.println("Induced Error in: "+Thread.currentThread().getName()+e.toString());
 				continue;
 			}
 		}
@@ -72,6 +70,9 @@ public class RequestHandler implements Runnable {
 		RequestHandler R10  = new RequestHandler();
 		RequestHandler R11  = new RequestHandler();
 		RequestHandler R12  = new RequestHandler();
+		RequestHandler R13  = new RequestHandler();
+		RequestHandler R14  = new RequestHandler();
+		RequestHandler R15  = new RequestHandler();
 		
 		Thread T1  = new Thread(R1);
 		Thread T2  = new Thread(R2);
@@ -85,6 +86,9 @@ public class RequestHandler implements Runnable {
 		Thread T10  = new Thread(R10);
 		Thread T11  = new Thread(R11);
 		Thread T12  = new Thread(R12);
+		Thread T13 = new Thread(R13);
+		Thread T14 = new Thread(R13);
+		Thread T15 = new Thread(R13);
 		
 		T1.start();
 		T2.start();
@@ -98,6 +102,9 @@ public class RequestHandler implements Runnable {
 		T10.start();
 		T11.start();
 		T12.start();
+		T13.start();
+		T14.start();
+		T15.start();
 		
 		try {
 			Thread.sleep(3000);
@@ -117,6 +124,9 @@ public class RequestHandler implements Runnable {
 		R10.setDone();
 		R11.setDone();
 		R12.setDone();
+		R13.setDone();
+		R14.setDone();
+		R15.setDone();
 		
 		
 		T1.interrupt();
@@ -131,6 +141,9 @@ public class RequestHandler implements Runnable {
 		T10.interrupt();
 		T11.interrupt();
 		T12.interrupt();
+		T13.interrupt();
+		T14.interrupt();
+		T15.interrupt();
 		
 		try {
 			T1.join();
@@ -144,6 +157,10 @@ public class RequestHandler implements Runnable {
 			T9.join();
 			T10.join();
 			T12.join();
+			T13.join();
+			T14.join();
+			T15.join();
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}   		
