@@ -30,7 +30,7 @@
 	     
 	   </target>
 	   <target name="run" depends="compile">
-	   	<java classname="edu.umb.cs681.hw18.RequestHandler">
+	   	<java classname="edu.umb.cs681.hw18.RunnableClass">
 	   			<classpath refid="classpath"></classpath>
 	   		</java>
 	   
